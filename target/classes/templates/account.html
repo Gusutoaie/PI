@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/account.css}" />
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container-account">
+    <div class="header-index">
+         <div  th:replace="~{fragments/header  :: header}"> </div>
+    </div>
+    <div class="bara-index-test"></div>
+
+    <section id="sidebar">
+        <div class="white-label"></div>
+        <div id="sidebar-nav">
+            <ul class="account-ul">
+                <li ><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a th:href="@{/admin}" th:if="${hasAdminRole}" ><i class="fa fa-desktop"></i> Admin</a></li>
+                <li class="active"><a th:href="@{/account}"><i class="fa fa-users"></i> Profile</a></li>
+                <li><a th:class="${orders}?'active'" th:href="@{/account/{name}(name='myorders')}"><i class="fa fa-pencil-square-o"></i> My Orders</a></li>
+                <li><a th:href="@{/logout}" ><i class="fa fa-sign-out"></i> Logout</a></li>
+            </ul>
+        </div>
+    </section>
+    <div class="account-content" th:if="${user != null}">
+            <table  th:object="${user}">
+                <tr>
+                    <td>Name:</td>
+                    <td>[[${user.name}]]</td>
+                </tr>
+                <tr>
+                    <td>Mail:</td>
+                    <td>[[${user.email}]]</td>
+                </tr>
+            </table>
+    </div>
+    <div class="account-content" th:if="${orders != null}">
+        <div class="table">
+            <div class="row header">
+                <div class="cell">
+                    Order ID
+                </div>
+                <div class="cell">
+                    Date
+                </div>
+                <div class="cell">
+                    Name
+                </div>
+                <div class="cell">
+                    Location
+                </div>
+            </div>
+
+            <div class="row" th:each="order : ${orders}">
+                <div class="cell" data-title="Name">
+                    [[${order.id}]]
+                </div>
+                <div class="cell" data-title="Age">
+                    [[${order.createdAt}]]
+                </div>
+                <div class="cell" data-title="Occupation">
+                    [[${order.fullName}]]
+                </div>
+                <div class="cell" data-title="Location">
+                    [[${order.address}]]
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

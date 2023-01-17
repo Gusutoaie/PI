@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}" />
+
+</head>
+<body>
+<div class="container-admin">
+<div class="header-index">
+    <div  th:replace="~{fragments/header  :: header}"> </div>
+</div>
+<div class="bara-index-test"></div>
+    <section id="sidebar">
+        <div class="white-label"></div>
+        <div id="sidebar-nav">
+            <ul class="account-ul">
+                <li ><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active"><a th:href="@{/admin/{name}(name='users')}"><i class="fa fa-users"></i> Users</a></li>
+                <li><a th:href="@{/admin/{name}(name='tickets')}" ><i class="fa fa-comments-o"></i> Ticket</a></li>
+                <li><a th:class="${orders}?'active'" th:href="@{/admin/{name}(name='orders')}"><i class="fa fa-pencil-square-o"></i> Orders</a></li>
+                <li><a th:class="${orders}?'active'" th:href="@{/admin/{name}(name='addproduct')}"><i class="fa fa-plus-square-o"></i> add product</a></li>
+                <li><a th:href="@{/logout}" ><i class="fa fa-sign-out"></i> Logout</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="admin-container" th:if="${orders != null}">
+        <div class="table">
+            <div class="row header">
+                <div class="cell">
+                    Order ID
+                </div>
+                <div class="cell">
+                    Date
+                </div>
+                <div class="cell">
+                    Name
+                </div>
+                <div class="cell">
+                    Location
+                </div>
+            </div>
+
+            <div class="row" th:each="order: ${orders}">
+                <div class="cell" data-title="Name">
+                    [[${order.id}]]
+                </div>
+                <div class="cell" data-title="Age">
+                    [[${order.createdAt}]]
+                </div>
+                <div class="cell" data-title="Occupation">
+                    [[${order.fullName}]]
+                </div>
+                <div class="cell" data-title="Location">
+                    [[${order.address}]]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="admin-container" th:if="${users != null}">
+        <div class="table">
+            <div class="row header">
+
+                <div class="cell">
+                    First Name
+                </div>
+                <div class="cell">
+                    Last Name
+                </div>
+                <div class="cell">
+                    Email
+                </div>
+            </div>
+
+            <div class="row" th:each="user: ${users}">
+
+                <div class="cell" data-title="Age">
+                    [[${user.firstName}]]
+                </div>
+                <div class="cell" data-title="Occupation">
+                    [[${user.lastName}]]
+                </div>
+                <div class="cell" data-title="Location">
+                    [[${user.email}]]
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="admin-container" th:if="${product != null}" >
+    <form class="add-class"  method="post" th:action="@{/admin/add}"  th:object="${product}">
+        <div class="add-product">
+            <label for="category">Name</label>
+            <input type="text" id="category" name="category" placeholder="NY" th:field="*{name}">
+        </div>
+        <div class="add-product">
+            <label for="image">Quantity</label>
+            <input type="text" id="image" name="image" placeholder="NY" th:field="*{quantity}">
+        </div>
+        <div class="add-product">
+            <label for="name">Price</label>
+            <input type="text" id="name" name="name" placeholder="NY" th:field="*{price}">
+        </div>
+        <div class="add-product">
+            <label for="price">Image</label>
+            <input type="text" id="price" name="price" placeholder="NY" th:field="*{image}">
+        </div>
+        <div class="add-product">
+            <label for="quantity">Category</label>
+            <input type="text" id="quantity" name="quantity" placeholder="NY" th:field="*{category}">
+        </div>
+        <button class="add-button" type="submit">Add Product</button>
+    </form>
+</div>
+
+
+
+</div>
+</body>
+</html>

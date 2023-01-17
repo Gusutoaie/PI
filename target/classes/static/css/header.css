@@ -1,0 +1,73 @@
+
+
+*{
+margin:0;
+padding:0;
+
+}
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
+*{ font-family: "Istok Web", sans-serif;
+}
+.navbar-container {
+ background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+display:flex;
+height: 5rem;
+flex-direction:row;
+justify-content: space-evenly;
+}
+
+#cart {
+height:3rem;
+}
+.cart-image:hover {
+cursor: pointer;
+color:grey;
+}
+.header-form input{
+height:2.5rem;
+width:15rem;
+border-radius: 20px 8px;
+border: 0 solid #adadad;
+margin:0;
+}
+.navbar-logo-1{
+text-decoration: none;
+color:rgb(36, 58, 90);
+font-size:1.7rem;
+align-self:center;
+}
+.navbar-logo:hover {
+color:grey;
+}
+
+.search-bar{
+display:flex;}
+.header-form {
+align-self:center;
+}
+.navbar-menu-v1 {
+list-style-type: none;
+width:7rem;
+display:flex;
+justify-content:space-between;
+}
+.nav-item-v1{
+align-self:center;
+}
+.cauta-button {
+background:none;
+border:none;
+height:1.7rem;
+color:rgb(36, 58, 90);
+cursor:pointer;
+}
+.cart-login {
+text-decoration:none;
+color:rgb(36, 58, 90);
+font-size:1.5rem;
+}
+.cart-login:hover {
+color:grey;}
+
+
+

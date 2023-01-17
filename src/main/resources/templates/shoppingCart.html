@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/shoppingcart.css}" />
+    <script src="jquery-3.6.1.min.js"></script>
+</head>
+
+<body>
+<div class="header-shopping" th:replace="~{fragments/header  :: header}"> </div>
+<div class="bara-index-test"></div>
+
+<div class="shopping-cart-container">
+    <div class="shopping-cart">
+        <div class="header-of-cart">
+            <h3 class="h3-head">Shopping Cart</h3>
+            <form  th:action="@{/shoppingCart/delete}" method="post">
+                <button type="submit">Remove All</button>
+            </form>
+        </div>
+
+        <div class="Cart-Items" th:each="products : ${product}">
+            <div class="image-box">
+                <img th:src="@{images/{imageId}(imageId=${products.image})}" style={{ height="120px" }} alt="mouse corsair">
+            </div>
+            <div class="about">
+                <h1 class="title">[[${products.name}]]</h1>
+                <h3 class="subtitle">ceva...</h3>
+            </div>
+            <div class="counter">
+                <div class="btn1">+</div>
+                <input class="count" value="1">
+                <div class="btn2">-</div>
+            </div>
+            <div class="prices">
+                <h2 class="amount">[[${products.price}]] €</h2>
+                <div class="save"><u>Save for later</u></div>
+                <form  th:action="@{/shoppingCart/delete/{id}(id=${products.id})}" method="get">
+                    <div class="remove">  <button type="submit"><u>Remove</u></button></div>
+                </form>
+            </div>
+
+            <!--                <a  href="#" class="buy">Buy Now</a>-->
+        </div>
+        <hr>
+        <div>
+            <div class="checkout">
+                <div class="total">
+
+                    <div>
+                        <div class="Subtotal">Sub-Total</div>
+                        <div class="items" th:text="${count}">Number</div>
+                    </div>
+                    <div class="total-amount">[[${totalPrice}]] &#x20AC;</div>
+                </div>
+                <a th:if="${totalPrice != 0.0}" th:href="@{/sendorder}"> <button class="button" >Checkout</button> </a>
+                <a th:if="${totalPrice == 0.0}" th:href="@{/}"> <button class="button" >Go back</button> </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/fragments/footer :: footer"/>
+
+
+
+<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/js/first.js}"></script>
+</body>
+</html>

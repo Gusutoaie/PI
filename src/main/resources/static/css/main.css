@@ -1,0 +1,216 @@
+*{
+margin:0;
+padding:0;
+
+}
+
+body{
+ background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);}
+.container {
+display:grid;
+grid-template-areas:
+
+"header-index header-index header-index header-index"
+"bara-index-test bara-index-test bara-index-test bara-index-test"
+"meniu-stanga meniu-dreapta meniu-dreapta meniu-dreapta"
+"footer-index footer-index footer-index footer-index";
+}
+
+.bara-index-test{
+grid-area: bara-index-test;
+background: rgb(36, 58, 90);
+height:4rem;
+}
+
+.footer-index{
+grid-area: footer-index;}
+.header-index{
+grid-area: header-index;
+}
+
+.meniu-stanga {
+grid-area: meniu-stanga;
+width:100%;
+height:100%
+}
+.meniu-dreapta {
+grid-area:meniu-dreapta;
+}
+.meniu-dreapta{
+margin:auto;
+height:100%;
+  width:80%;
+  display:flex;
+  gap: 0.5rem 0.5rem;
+  flex-wrap:wrap;
+  flex-direction:flex-column;
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
+*{ font-family: "Istok Web", sans-serif;
+}
+
+.card {
+  position: relative;
+  width: 320px;
+  height: 480px;
+  background: #191919;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  width: 100%;
+  height: 100%;
+  background: #ffce00;
+  transform: skewY(345deg);
+  transition: 0.5s;
+}
+
+.card:hover::before {
+  top: -70%;
+  transform: skewY(390deg);
+}
+
+.card::after {
+  content: "CORSAIR";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-weight: 600;
+  font-size: 6em;
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.card .imgBox {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1;
+}
+/*
+.card .imgBox img {
+    max-width: 100%;
+
+    transition: .5s;
+}
+
+.card:hover .imgBox img {
+    max-width: 50%;
+
+}
+*/
+.card .contentBox {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.card .contentBox h3 {
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card .contentBox .price {
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card .contentBox .buy {
+  position: relative;
+  top: 100px;
+  opacity: 0;
+  padding: 10px 30px;
+  margin-top: 15px;
+  color: #000000;
+  text-decoration: none;
+  background: #ffce00;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
+.card:hover .contentBox .buy {
+  top: 0;
+  opacity: 1;
+}
+
+.mouse {
+  height: 300px;
+  width: auto;
+  background-image:none;
+  background-blend-mode: multiply;
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Grandstander&display=swap");
+
+
+.meniu-stanga {
+  height: 100vh;
+}
+.side-nav,
+.nav-menu {
+  height: 97%;
+}
+.side-nav .nav-menu {
+  list-style: none;
+  padding: 40px 0;
+  width: 200px;
+  background-color: rgb(36, 58, 90);
+}
+.side-nav .nav-item {
+  position: relative;
+  padding: 10px 20px;
+}
+.nav-item.active {
+  background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);
+  box-shadow: 0px -3px rgba(0, 0, 0, 0.2), 0px 3px rgba(0, 0, 0, 0.2);
+}
+.nav-item.active a {
+  color: #2980b9;
+}
+.nav-item a {
+  text-decoration: none;
+  color: #fff;
+}
+.menu-text {
+  padding: 0 20px;
+}
+.side-nav .nav-item.active::before {
+  position: absolute;
+  background-color: transparent;
+  bottom: 100%;
+  right: 0;
+  height: 150%;
+  width: 20px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 0 20px 0 0 #fff;
+}
+.side-nav .nav-item.active::after {
+  position: absolute;
+  background-color: transparent;
+  top: 100%;
+  right: 0;
+  height: 150%;
+  width: 20px;
+  border-top-right-radius: 25px;
+  box-shadow: 0 -20px 0 0 #fff;
+}

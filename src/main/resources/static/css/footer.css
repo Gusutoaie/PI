@@ -1,0 +1,25 @@
+.footer{
+bottom:0;
+    background-color: black;
+    height:8rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.meniu-centru{
+    display: flex;
+    flex-direction: column;
+}
+.meniu-centru-button{
+    text-decoration: none;
+    color:white;
+    font-size:1.2rem;
+
+}
+.meniu-centru-button:hover{
+    color: aquamarine;
+    
+}
+.nobodys{
+    font-size:1.7rem;
+}

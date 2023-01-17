@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/sendorder.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
+</head>
+<body>
+<div class="header-index" >
+  <div  th:replace="~{fragments/header  :: header}"> </div>
+  <div class="bara-index-test"></div>
+</div>
+<br>
+<h2>Nobody Checkout Form</h2>
+<br>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form method="post" role="form" th:action="@{/sendorder/succes}"  th:object="${order}">
+
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="fullName"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="John M. Doe" th:field="*{fullName}">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input id="email" name="email" placeholder="john@example.com" type="text" th:field="*{email}">
+            <label for="phoneNumber"><i class="fa fa-phone" aria-hidden="true"></i> Phone Number</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone" th:field="*{phoneNumber}">
+            <label for="address"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="address" name="address" placeholder="542 W. 15th Street" th:field="*{address}">
+            <label for="county"><i class="fa fa-institution"></i> County</label>
+            <input type="text" id="county" name="county" placeholder="Timis" th:field="*{county}">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="NY" th:field="*{city}">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="10001" th:field="*{zip}">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label>We only accept cash on delivery payment</label>
+            <div class="icon-container">
+              <i class="fa fa-money" aria-hidden="true" style="color:navy;"></i>
+            </div>
+
+            <div class="row">
+              <div class="col-50">
+                <label>Other info</label>
+                <input type="text" name="otherinfo" id="otherinfo" th:field="*{otherinfo}">
+<!--                <textarea name="otherinfo" id="otherinfo" cols="80" rows="10"  th:field="*{otherinfo}"></textarea>-->
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+        <button class="btn" type="submit">Send the Order</button>
+        <div class="btn btn2">
+        <a th:href="@{/shoppingCart}">Go back</a>
+        </div>
+        <!--        <input type="submit" value="Send the Order" class="btn">-->
+      </form>
+    </div>
+  </div>
+  <div class="col-25">
+    <div class="container" >
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>[[${count}]]</b></span></h4>
+      <div class="subcontainer-sendorder" th:each="products : ${product}">
+      <p><a href="#">[[${products.name}]]</a> <span class="price">[[${products.price}]] €</span></p>
+      <hr>
+      </div>
+      <p>Total <span class="price" style="color:black"><b>[[${totalPrice}]] &#x20AC;</b></span></p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" xmlns:custom="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Nobody's SHOP</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}" />
+
+</head>
+<body>
+<div class="container">
+    <div class="header-index" >
+<div  th:replace="~{fragments/header  :: header}"> </div>
+        <div class="bara-index-test"></div>
+    </div>
+    <div class="meniu-stanga">
+        <nav class="side-nav">
+            <ul class="nav-menu">
+                <!--                th:href="@{/(numedin=${Smartwatch})}"-->
+                <li class="nav-item active"><a href="#"><i class="fas fa-tachometer-alt"></i><span class="menu-text">Nobody</span></a></li>
+                <li class="nav-item"><a th:href="@{/{name}(name='mobile')}"><i class="fas fa-user"></i><span class="menu-text" >Mobile</span></a></li>
+                <li class="nav-item"><a th:href="@{/{name}(name='tablets')}"><i class="fas fa-file-alt"></i><span class="menu-text" >Tablets</span></a></li>
+                <li class="nav-item"><a th:href="@{/{name}(name='laptop')}"><i class="fas fa-play "></i><span class="menu-text" >Laptop</span></a></li>
+                <li class="nav-item"><a th:href="@{/{name}(name='smartwatch')}"><i class="fas fa-sign-out-alt"></i><span class="menu-text">Smartwatch</span></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="meniu-dreapta">
+    <div class="card" th:each="product : ${products}">
+<!--        <form action="" th:action="@{/shoppingCart}" th:object="${produse}" method="post">-->
+        <div class="imgBox">
+            <img th:src="@{images/{imageId}(imageId=${product.image})}" alt="mouse corsair" class="mouse">
+        </div>
+        <div class="contentBox">
+            <h3>[[${product.name}]]</h3>
+            <h2 class="price">[[${product.price}]] €</h2>
+            <form method="post" th:action="@{'/shoppingCart/{id}'(id=${product.id})}">
+<!--                <a th:href="@{'/shoppingCart" class="buy">Buy Now</a>-->
+                <button class="buy" type="submit">Buy Now</button>
+            </form>
+        </div>
+<!--        </form>-->
+    </div>
+    </div>
+</div>
+<div class="footer-index" th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/js/fortest.js}"></script>
+</body>
+</html>
